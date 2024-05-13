@@ -368,7 +368,7 @@ router.get('/new-arrivals', async (req, res) => {
 
 router.get('/trending-products', async (req, res) => {
     try {
-        const trendingProducts = await Product.find({ createdAt: { $gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) } })
+        const trendingProducts = await Product.find()
             .populate(['availablePrintType', 'category'])
             .sort({ noOfPerchases: -1 })
             .limit(10);
